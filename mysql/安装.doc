@@ -1,7 +1,10 @@
 下载安装
 1下载mysql的yum仓库：wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
 2安装mysql的yum仓库：yum -y install mysql57-community-release-el7-10.noarch.rpm
-3安装mysql：                   yum -y install mysql-community-server
+3默认的mysql版本时5.7。如果想要修改mysql版本： vim /etc/yum.repos.d/mysql-community.repo  修改配置，希望安装的版本的enabled=1，不希望安装的版本enabled=0
+4安装mysql：                   yum -y install mysql-community-server
+
+
 
 启动/停止mysql
 systemctl start  mysqld.service
