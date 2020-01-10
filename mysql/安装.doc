@@ -1,0 +1,27 @@
+下载安装
+1下载mysql的yum仓库：wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
+2安装mysql的yum仓库：yum -y install mysql57-community-release-el7-10.noarch.rpm
+3安装mysql：                   yum -y install mysql-community-server
+
+启动/停止mysql
+systemctl start  mysqld.service
+systemctl status mysqld.service
+systemctl stop mysqld.service
+
+获取初始密码
+grep "password" /var/log/mysqld.log
+
+使用初始密码登陆
+mysql -uroot -p
+
+修改密码，只有修改密码之后才能进行其他操作
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new password';
+
+//查看密码校验策略
+SHOW VARIABLES LIKE 'validate_password%';
+如果想设置简单密码，使用一下指令修改密码校验策略
+set global validate_password_policy=0;
+set global validate_password_length=1;
+
+删除yum仓库
+yum -y remove mysql57-community-release-el7-10.noarch
